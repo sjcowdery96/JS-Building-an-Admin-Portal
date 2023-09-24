@@ -5,7 +5,7 @@ async function main() {
 
     books.forEach(renderBook)
 }
-//changed
+
 function renderBook(book) {
     let bookContainer = document.querySelector('.book-container')
     bookContainer.innerHTML += `
