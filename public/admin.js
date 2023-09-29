@@ -46,7 +46,7 @@ function createAdmin(books) {
         // Use the setAttribute() method to set the id attribute.
         inputElement.setAttribute('id', 'input-' + bookId);
         // Set the text of the button element.
-        buttonElement.textContent = 'update'
+        buttonElement.textContent = 'Save'
 
         // Add the input element to the label element.
         labelElement.appendChild(inputElement);
@@ -58,6 +58,7 @@ function createAdmin(books) {
     //append the whole list of elements in HTML form to the body of the document
     document.body.appendChild(listElement);
 }
+
 
 async function updateInventory() {
     //grab the id of the input based off the matched ID of the submit button
@@ -72,10 +73,9 @@ async function updateInventory() {
         //create our payload for the body of the API request
         console.log(this.id)
         const updatedInventory = {
-            //since we matched the buttons and inputs to the book ID's "this" works!
+            //since we matched the buttons and inputs to the book ID's using "this" works
             id: this.id,
             quantity: updatedQuantity,
-            title: 'updated'
         }
         //run our update post method
         await fetch('http://localhost:3001/updateBook', {
@@ -86,7 +86,6 @@ async function updateInventory() {
             },
             //stringifys the body we made
             body: JSON.stringify(updatedInventory)
-
         })
             .then(response => response.json())
             .then(json => {
